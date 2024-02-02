@@ -15,6 +15,6 @@ SELECT
 FROM 
 	dbo.Schedule, dbo.Disciplins, dbo.Groups, dbo.Teacher
 WHERE 
-	dbo.Schedule.discipline = dbo.Disciplins.disciline_id
+	dbo.Schedule.discipline = dbo.Disciplins.discipline_id
 AND dbo.Schedule.[group] = dbo.Groups.group_id
 AND dbo.Schedule.teacher = dbo.Teacher.teacher_id;

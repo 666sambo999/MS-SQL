@@ -16,6 +16,7 @@ WHERE
 	AND [discipline] = (SELECT discipline_id FROM Disciplins WHERE discipline_name LIKE '%MS SQL%')
 
 SELECT 
+	dbo.Schedule.lesson_id AS 'ID занятия',
 	dbo.Disciplins.discipline_name	AS 'дисциплина',
 	dbo.Groups.group_name			AS 'группа',
 	DATENAME(dw, dbo.Schedule.[date]) AS 'День недели',
@@ -23,6 +24,7 @@ SELECT
 	dbo.Schedule.[time]				AS 'время',
 	dbo.Teacher.last_name + ' ' + dbo.Teacher.first_name + ' ' + dbo.Teacher.middle_name AS 'преподаватель',
 	[Статус] = IIF (Schedule.spent = 1, 'Проведено', 'Запланировано')
+
 FROM 
 	dbo.Schedule, dbo.Disciplins, dbo.Groups, dbo.Teacher
 WHERE 
@@ -30,5 +32,5 @@ WHERE
 AND dbo.Schedule.[group] = dbo.Groups.group_id
 AND dbo.Schedule.teacher = dbo.Teacher.teacher_id
 AND dbo.Schedule.discipline = (SELECT discipline_id FROM Disciplins WHERE discipline_name LIKE '%MS SQL%')
-AND dbo.Schedule.[date] = '2023-12-01'
-AND dbo.Schedule.[time] = '14:30'
+--AND dbo.Schedule.[date] = '2023-12-01'
+--AND dbo.Schedule.[time] = '14:30'
